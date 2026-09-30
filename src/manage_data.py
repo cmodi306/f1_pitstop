@@ -33,7 +33,17 @@ def update_database(conn, f1_cal):
         f1_cal,
     )
     conn.commit()
- 
+
+def update_drivers(conn):
+    cur = conn.cursor()
+    cur.executemany = """
+                CREATE TABLE IF NOT EXISTS drivers(
+                                            driver       TEXT       NOT NULL,
+                                            number       INTEGER    NOT NULL
+                );
+            """
+    conn.commit()
+
 def main(year):
     DB_FILE = f"data/f1_data_{year}.db"
     f1_cal = get_f1_calendar(2026)
@@ -42,6 +52,7 @@ def main(year):
     try:
         create_tables(conn)
         update_database(conn, f1_cal=f1_cal)
+        update_drivers(conn)
     finally:
         conn.close()
 

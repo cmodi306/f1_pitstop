@@ -1,20 +1,12 @@
 :root {
-  --bg: #f5f6f8;
-  --surface: #ffffff;
-  --text: #11151c;
-  --muted: #5b6573;
-  --border: #e2e5ea;
-  --accent: #f2412b;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #11151c;
-    --surface: #1e2530;
-    --text: #f3f4f6;
-    --muted: #9aa3b0;
-    --border: #2c3542;
-  }
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --text: #f3f4f6;
+  --muted: #9a9aa0;
+  --border: #2e2e32;
+  --accent: #ffffff;
+  --formula: #ff4f00;
 }
 
 * { box-sizing: border-box; }
@@ -31,8 +23,7 @@ body {
   align-items: center;
   gap: 32px;
   padding: 12px 24px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--accent);
 }
 
 .brand img { display: block; height: 40px; width: auto; }
@@ -41,14 +32,14 @@ body {
 
 .tab {
   padding: 8px 16px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-weight: 600;
   border-bottom: 3px solid transparent;
 }
 
-.tab:hover { color: var(--text); }
-.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+.tab:hover { color: #fff; }
+.tab.active { color: #fff; border-bottom-color: #fff; }
 
 main { max-width: 1200px; margin: 0 auto; padding: 24px; }
 
@@ -70,7 +61,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px; }
 }
 
 .round.past { opacity: 0.55; }
-.round.next { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.round.next { border-color: var(--formula); box-shadow: 0 0 0 1px var(--formula); }
 
 .round-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .round-head h2 { margin: 0; font-size: 1.1rem; }
@@ -91,17 +82,17 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px; }
 .badge {
   margin-left: auto;
   padding: 2px 10px;
-  border-radius: 999px;
+  border-radius: 499px;
   background: var(--accent);
-  color: #fff;
-  font-size: 0.75rem;
+  color: var(--formula);
+  font-size: 0.85rem;
   font-weight: 700;
 }
 
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 td { padding: 6px 0; border-top: 1px solid var(--border); }
 td.time { text-align: right; font-variant-numeric: tabular-nums; }
-tr.race td.type { color: var(--accent); font-weight: 700; }
+tr.race td.type { color: var(--formula); font-weight: 700; }
 
 @media (max-width: 600px) {
   .site-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 16px; }

@@ -34,3 +34,17 @@ def get_f1_calendar(year, ego_country="Germany"):
         return(calendar)
     else:
         raise "Error fetching data from API."
+
+def get_drivers():
+    drivers = []
+    url = f"https://api.openf1.org/v1/drivers"
+    response = requests.get(url=url)
+    if response.status_code == 200:
+        data = response.json()
+        i = 0
+        for driver in data:
+            if driver.get("full_name") not in drivers:
+                drivers.append(driver.get("full_name"))
+                print(driver)
+
+get_drivers()
