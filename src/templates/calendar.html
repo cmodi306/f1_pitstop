@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-head">
+  <h1>{{ year }} Calendar</h1>
+  <p class="muted">{{ rounds | length }} rounds · times shown in German local time</p>
+</div>
+
+{% if not rounds %}
+  <p class="muted">No sessions in the database yet. Run <code>python src/manage_data.py</code> to fetch them.</p>
+{% endif %}
+
+<div class="rounds">
+  {% for round in rounds %}
+  <section class="round {% if round.end_date < today %}past{% endif %} {% if round.number == next_round %}next{% endif %}">
+    <div class="round-head">
+      <span class="round-no">R{{ round.number }}</span>
+      <div>
+        <h2>{{ round.country }}</h2>
+        <p class="muted">{{ round.location }} · {{ round.start_date }} – {{ round.end_date }}</p>
+      </div>
+      {% if round.number == next_round %}<span class="badge">Next</span>{% endif %}
+    </div>
+    <table>
+      <tbody>
+        {% for s in round.sessions %}
+        <tr class="{{ s.session_type | lower }}">
+          <td class="type">{{ s.session_type }}</td>
+          <td>{{ s.start_date }}</td>
+          <td class="time">{{ s.start_time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

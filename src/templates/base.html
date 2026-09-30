@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F1 Pitstop</title>
+  <link rel="icon" href="/images/f1_pitstop-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">
+      <picture>
+        <source srcset="/images/f1_pitstop-logo-dark.svg" media="(prefers-color-scheme: dark)">
+        <img src="/images/f1_pitstop-logo.svg" alt="F1 Pitstop" height="40">
+      </picture>
+    </a>
+    <nav class="tabs">
+      <a href="/calendar" class="tab {% if active_tab == 'calendar' %}active{% endif %}">Calendar</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
